@@ -1,0 +1,23 @@
+#Name: Deva Madala
+#Student ID: UG14-1920
+
+m<-readline("Enter size of the set (m) {1,...,m}: ") #asking user for input - m
+m<-as.integer(m)
+n<-readline("Enter the number of elements (n) that are to be uniformly chosen {a1,...an}: ") 
+n<-as.integer(n)
+
+#using the algorithm
+x <- sample(1:m, 1, replace=T) #setting x to a1
+y <- 0
+for(i in 2:n){
+	y <- sample(1:m, 1, replace=T) #setting y to ai - one element uniformly chosen every iteration
+	x <- min(x,y) #setting the min of data to x
+}
+numOfDistinctElements <- (m/x)-1
+print(paste("Streaming method: ", numOfDistinctElements))
+
+#Storing all the data and then finding the number of unique elements - Verification
+an<-sample(1:m, n, replace=T)
+i <- length(unique(an))
+print (paste("Storing all data method(verification): ", i))
+ 

@@ -1,0 +1,24 @@
+#Name: Deva Madala
+#Student ID: UG14-1920
+
+m<-readline("Enter size of the set (m) {1,...,m}: ") #asking user for input - m
+m<-as.integer(m)
+n<-readline("Enter the number of distinct elements (n) that are to be uniformly chosen {a1,...an}: ") 
+n<-as.integer(n)
+
+A<-0
+W<-0
+
+an<-sample(m,n,replace=FALSE)
+
+for(i in 1:n){
+	X <- 1;
+	Y <- an[i];
+	p <- (X/(W+X));
+	prob <- runif(1);
+	if(prob<p){
+		A <- Y;
+	}
+	W <- W+X
+}
+print(paste("Using Algorithm: ", A))
